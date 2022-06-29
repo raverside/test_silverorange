@@ -1,4 +1,5 @@
 import { Router, Request, Response } from 'express';
+import RepoService from '../services/RepoService';
 
 export const repos = Router();
 
@@ -7,6 +8,6 @@ repos.get('/', async (_: Request, res: Response) => {
 
   res.status(200);
 
-  // TODO: See README.md Task (A). Return repo data here. You’ve got this!
-  res.json([]);
+  const repositories = await RepoService.fetchAllRepos();
+  res.json(repositories);
 });
